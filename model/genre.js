@@ -1,30 +1,15 @@
-const Genres = require('../schemas/genre');
+const mongoose = require('../database')
 
-class Genre {
+const Genre = mongoose.model('Genre', new mongoose.Schema({
 
-    constructor(name) {
-
-        this.name = name;
+    name: { 
+        type: String, 
+        required: true,
+        minLength: 5,
+        maxlength: 50
     }
 
-    
-    async createGenre() {
+}));
 
-        try {
-
-            const genre = new Genres({
-
-                name: 'Marv',
-            });
-            
-            const result = await genre.save(); 
-            
-            console.log(result);
-            
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-}
 
 module.exports = Genre;
