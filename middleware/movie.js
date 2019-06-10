@@ -17,6 +17,7 @@ exports.isBodyValid = (req, res, next) => {
 function validate(movie) {
 
     const schema = {
+        
         title: Joi.string().min(2).max(50).required(),
         genreId: Joi.objectId().required(),
         stock: Joi.number(),
