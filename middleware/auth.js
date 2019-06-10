@@ -1,6 +1,5 @@
 const Joi = require('@hapi/joi');
 
-
 exports.isBodyValid = (req, res, next) => {
 
     const { error } = validate(req.body);
@@ -12,16 +11,15 @@ exports.isBodyValid = (req, res, next) => {
     }
 
     next();
-};
+}
 
-function validate(movie) {
+function validate(req) {
 
     const schema = {
-        title: Joi.string().min(2).max(50).required(),
-        genreId: Joi.objectId().required(),
-        stock: Joi.number(),
-        rate: Joi.number()
-    };
 
-    return Joi.validate(movie, schema);
+        email: Joi.string().min(5).max(50).required().email(),
+        password: Joi.string().min(5).max(255).required(),
+      };
+    
+    return Joi.validate(req, schema);
 }
