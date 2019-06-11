@@ -27,7 +27,7 @@ exports.isTokenValid = (req, res, next) => {
         next();
 
     } catch (error) {
-
+        
         //400 bad request client send us is invalid
         res.status(400).send('Invalid token.');
         

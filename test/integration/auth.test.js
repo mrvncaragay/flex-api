@@ -17,7 +17,6 @@ describe('auth middleware', () => {
         server.close();
     });
 
-    
     let token;
 
     const exec = async () => {
@@ -38,7 +37,7 @@ describe('auth middleware', () => {
         token = '';
 
         const res = await exec();
-        expect(res.status).toBe(401);
+        expect(res.status).toBe(401); 
     });
 
     it('should return 400 if token is invalid', async () => {

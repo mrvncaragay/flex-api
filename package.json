@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon start",
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose --coverage"
   },
   "repository": {
     "type": "git",

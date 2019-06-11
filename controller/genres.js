@@ -21,10 +21,10 @@ exports.postGenre = async (req, res) => {
 exports.updateGenre = async (req, res) => {
 
     const genre = await Genre.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true }) //new here is to get the updated document from db
-
+    
     if( !genre ) return res.status(404).send('The genre with the given ID was not found.');
     
-    res.send(genre);    
+    res.send(genre);   
 };
 
 exports.removeGenre = async (req, res, next) => {
