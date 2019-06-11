@@ -10,6 +10,6 @@ router.get('/', genre.index);
 router.post('/', auth.isTokenValid, validator.isBodyValid, genre.postGenre);
 router.put('/:id', auth.isTokenValid, validator.isBodyValid, genre.updateGenre);
 router.delete('/:id', [ auth.isTokenValid, admin.isAdmin ], genre.removeGenre);
-router.get('/:id', genre.getGenre)
+router.get('/:id', validator.validateObjectId, genre.getGenre)
 
 module.exports = router;

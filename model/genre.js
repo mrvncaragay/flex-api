@@ -1,4 +1,4 @@
-const mongoose = require('../database')
+const mongoose = require('../startup/database')
 
 const Genre = mongoose.model('Genre', new mongoose.Schema({
 

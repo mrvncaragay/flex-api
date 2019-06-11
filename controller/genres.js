@@ -15,7 +15,7 @@ exports.postGenre = async (req, res) => {
 
     await genre.save();
 
-    res.redirect('/api/genres');       
+    res.send(genre);       
 };
 
 exports.updateGenre = async (req, res) => {

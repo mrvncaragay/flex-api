@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../startup/database');
 const Genre = require('./genre');
 
 

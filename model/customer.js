@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../startup/database');
 
 const Customer = mongoose.model('Customer', new mongoose.Schema({
 

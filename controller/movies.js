@@ -12,94 +12,70 @@ exports.index = async (req, res) => {
 
 exports.postMovie =  async (req, res) => {
 
-    try {
 
-        const genre = await Genre.findById(req.body.genreId)
-        if (!genre) return res.status(400).send('Invalid genre.');
+    const genre = await Genre.findById(req.body.genreId)
+    if (!genre) return res.status(400).send('Invalid genre.');
 
-        const movie = new Movie({ 
+    const movie = new Movie({ 
 
-            title: req.body.title,
-            genre: {
-                _id: genre._id,
-                name: genre.name
-            },
-            numberInStock: req.body.stock,
-            dailyRentalRate: req.body.rate 
-        });
+        title: req.body.title,
+        genre: {
+            _id: genre._id,
+            name: genre.name
+        },
+        numberInStock: req.body.stock,
+        dailyRentalRate: req.body.rate 
+    });
 
-        await movie.save();
-        
-        if( !movie ) return res.status(404).send('Creating movie list failed.');
+    await movie.save();
+    
+    if( !movie ) return res.status(404).send('Creating movie list failed.');
 
-        res.status(300).redirect(movie);
-        
-    } catch (error) {
-
-        return res.status(404).send(error.message);
-    }
+    res.status(300).redirect(movie);
 };
 
 exports.updateMovie = async (req, res) => {
 
-    try {
 
-        const genre = await Genre.findById(req.body.genreId);
-        if (!genre) return res.status(400).send('Invalid genre.');
+    const genre = await Genre.findById(req.body.genreId);
+    if (!genre) return res.status(400).send('Invalid genre.');
 
-        const movie = await Movie.findByIdAndUpdate(req.params.id, { 
+    const movie = await Movie.findByIdAndUpdate(req.params.id, { 
 
-            title: req.body.title,
-            genre: {
-                _id: genre._id,
-                name: genre.name
-            },
-            
-            numberInStock: req.body.stock,
-            dailyRentalRate: req.body.rate
-
-        }, { 
-            new: true 
-        });
-
-        if( !movie ) return res.status(404).send('The movie with the given ID was not found.');
-     
-        res.send(movie);
+        title: req.body.title,
+        genre: {
+            _id: genre._id,
+            name: genre.name
+        },
         
-    } catch (error) {
-        
-        return res.status(404).send(error.message);
-    }
+        numberInStock: req.body.stock,
+        dailyRentalRate: req.body.rate
+
+    }, { 
+        new: true 
+    });
+
+    if( !movie ) return res.status(404).send('The movie with the given ID was not found.');
+    
+    res.send(movie);
 };
 
 exports.removeMovie = async (req, res) => {
 
-    try {
 
-        const movie = await Movie.findByIdAndRemove(req.params.id)
+    const movie = await Movie.findByIdAndRemove(req.params.id)
 
-        if( !movie ) return res.status(404).send('The movie with the given ID was not found.');
+    if( !movie ) return res.status(404).send('The movie with the given ID was not found.');
 
-        res.send(movie);
-        
-    } catch (error) {
-        
-        return res.status(404).send(error.message);
-    }
+    res.send(movie);
 };
 
 exports.getMovie = async (req, res) => {
 
-    try {
 
-        const movie = await Movie.findById(req.params.id)
+    const movie = await Movie.findById(req.params.id)
 
-        if( !movie ) return res.status(404).send('The movie with the given ID was not found.');
+    if( !movie ) return res.status(404).send('The movie with the given ID was not found.');
 
-        res.send(movie);
-        
-    } catch (error) {
-
-        return res.status(404).send(error.message);
-    }
+    res.send(movie);
 }

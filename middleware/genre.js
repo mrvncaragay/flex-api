@@ -1,4 +1,5 @@
 const Joi = require('@hapi/joi');
+const mongoose = require('mongoose');
 
 exports.isBodyValid = (req, res, next) => {
 
@@ -12,11 +13,19 @@ exports.isBodyValid = (req, res, next) => {
     next();
 };
 
+exports.validateObjectId = (req, res, next) => {
+
+    if( !mongoose.Types.ObjectId.isValid(req.params.id) )
+        return res.status(404).send('Invalid Id.');
+
+    next();
+};
+
 function validate(course) {
 
     const schema = {
-        name: Joi.string().min(3).required()
+        name: Joi.string().min(5).max(50).required()
     };
 
     return Joi.validate(course, schema);
-}
+};

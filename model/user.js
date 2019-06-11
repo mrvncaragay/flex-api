@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const mongoose = require('mongoose');
+const mongoose = require('../startup/database');
 
 const User = mongoose.model('User', new mongoose.Schema({
 
@@ -33,6 +33,7 @@ const User = mongoose.model('User', new mongoose.Schema({
     token: {
         type: String,
         get: function () {
+
             return jwt.sign({ 
 
                 _id: this._id,
