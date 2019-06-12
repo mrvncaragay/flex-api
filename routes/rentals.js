@@ -6,7 +6,7 @@ const router = express.Router();
 const rental = require('../controller/rentals');
 
 router.get('/', rental.index);
-router.get('/:id', validator.validateObjectId, rental.getRental);
+router.get('/:id', auth.isTokenValid, validator.validateObjectId, rental.getRental);
 router.post('/', auth.isTokenValid, validator.isBodyValid, rental.postRental);
 
 module.exports = router;
