@@ -224,5 +224,6 @@ describe('/api/movies', () => {
             expect(res.body).toHaveProperty('email', email);
             expect(res.body).toHaveProperty('name', name);
         });
+        
     });
 });

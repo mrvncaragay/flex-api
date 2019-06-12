@@ -5,6 +5,7 @@ const app = express();
 
 require('./startup/routes')(app);
 require('./startup/logs')();
+require('./startup/production')(app);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, () => {
