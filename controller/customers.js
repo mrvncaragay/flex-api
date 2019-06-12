@@ -4,7 +4,7 @@ exports.index = async (req, res) => {
 
     const result = await Customer.find().sort('name');
 
-    if ( !result.length ) return res.send('No customers');
+    if ( !result.length ) return res.send('No customers.');
 
     res.send(result);
 };
@@ -20,7 +20,7 @@ exports.postCustomer =  async (req, res) => {
 
     await customer.save();
 
-    res.redirect(customer);
+    res.send(customer);
 };
 
 exports.updateCustomer= async (req, res) => {
