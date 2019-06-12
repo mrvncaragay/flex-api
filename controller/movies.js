@@ -5,14 +5,13 @@ exports.index = async (req, res) => {
 
     const result = await Movie.find().sort('name');
 
-    if ( !result.length ) return res.send('No movies');
+    if ( !result.length ) return res.send('No movies.');
 
     res.send(result);
 };
 
 exports.postMovie =  async (req, res) => {
-
-
+ 
     const genre = await Genre.findById(req.body.genreId)
     if (!genre) return res.status(400).send('Invalid genre.');
 
@@ -31,14 +30,13 @@ exports.postMovie =  async (req, res) => {
     
     if( !movie ) return res.status(404).send('Creating movie list failed.');
 
-    res.status(300).redirect(movie);
+    res.send(movie);
 };
 
 exports.updateMovie = async (req, res) => {
 
-
     const genre = await Genre.findById(req.body.genreId);
-    if (!genre) return res.status(400).send('Invalid genre.');
+    if (!genre) return res.status(404).send('The genre with the given ID was not found.');
 
     const movie = await Movie.findByIdAndUpdate(req.params.id, { 
 

@@ -2,19 +2,15 @@ require('dotenv').config();
 const request = require('supertest');
 const User = require('../../model/user');
 const Genre = require('../../model/genre');
-let server;
+const server = require('../../app'); 
 
 describe('auth middleware', () => {
 
-    beforeEach(() => { 
-
-        server = require('../../app'); 
-    });
     
     afterEach( async () => { 
 
         await Genre.deleteMany({});
-        server.close();
+        await server.close();
     });
 
     let token;

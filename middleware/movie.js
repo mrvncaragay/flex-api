@@ -6,7 +6,7 @@ exports.isBodyValid = (req, res, next) => {
     const { error } = validate(req.body);
 
     if ( error ) {
-
+        
         res.status(400).send(error.details[0].message);
         return;
     }
@@ -26,10 +26,10 @@ function validate(movie) {
 
     const schema = {
         
-        title: Joi.string().min(2).max(50).required(),
-        genreId: Joi.objectId().required(),
-        stock: Joi.number(),
-        rate: Joi.number()
+        title: Joi.string().min(5).max(50).required(),
+        genreId: Joi.string().required(),
+        stock: Joi.number().positive().required(),
+        rate: Joi.number().positive().required()
     };
 
     return Joi.validate(movie, schema);

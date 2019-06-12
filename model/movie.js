@@ -8,7 +8,7 @@ const Movie = mongoose.model('Movie', new mongoose.Schema({
 
         type: String,
         required: true,
-        min: 2,
+        min: 5,
         max: 50,
         trim: true
      },

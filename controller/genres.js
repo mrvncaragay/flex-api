@@ -4,7 +4,7 @@ exports.index = async (req, res) => {
 
     const result = await Genre.find().sort('name');
 
-    if ( !result.length ) return res.send('No genres!');
+    if ( !result.length ) return res.send('No genres.');
 
     res.send(result);   
 };
