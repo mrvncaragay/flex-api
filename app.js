@@ -8,8 +8,6 @@ require('./startup/logs')();
 require('./startup/production')(app);
 
 const port = process.env.PORT || 8080;
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log(`listening to port ${port}...`)
 });
-
-module.exports = server;

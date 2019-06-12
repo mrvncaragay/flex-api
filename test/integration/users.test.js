@@ -100,30 +100,30 @@ describe('/api/movies', () => {
 
         });
 
-        it('should return 401 if client is not logged in', async () => {
+        // it('should return 401 if client is not logged in', async () => {
 
-            token = '';
+        //     token = '';
 
-            const res = await exec();
-            expect(res.status).toBe(401);
-        });
+        //     const res = await exec();
+        //     expect(res.status).toBe(401);
+        // });
 
-        it('should return 400 if token is invalid', async () => {
+        // it('should return 400 if token is invalid', async () => {
 
-            token = '123567';
+        //     token = '123567';
             
-            const res = await exec();
-            expect(res.status).toBe(400);
-        });
+        //     const res = await exec();
+        //     expect(res.status).toBe(400);
+        // });
 
-        it('should return 403 if client is not an admin', async () => {
+        // it('should return 403 if client is not an admin', async () => {
             
-            const user = new User({ isAdmin: false })
-            token = user.token
+        //     const user = new User({ isAdmin: false })
+        //     token = user.token
 
-            const res = await exec();
-            expect(res.status).toBe(403);
-        });
+        //     const res = await exec();
+        //     expect(res.status).toBe(403);
+        // });
 
         it('should return 400 if title is less than 5 characters', async () => {
 
